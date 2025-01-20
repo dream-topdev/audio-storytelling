@@ -48,7 +48,7 @@ export default function Header({ isDarkMode, onThemeToggle }: HeaderProps) {
         <IconButton 
           onClick={onThemeToggle}
           sx={{ 
-            color: isDarkMode ? colors.text.light.primary : colors.text.dark.primary,
+            color: isDarkMode ? colors.text.dark.primary : colors.text.light.primary,
             bgcolor: isDarkMode ? colors.button.dark : colors.button.light,
             '&:hover': {
               bgcolor: isDarkMode ? colors.button.hover.dark : colors.button.hover.light,
@@ -62,7 +62,7 @@ export default function Header({ isDarkMode, onThemeToggle }: HeaderProps) {
           startIcon={<LogoutIcon />}
           onClick={handleLogout}
           sx={{
-            color: isDarkMode ? colors.text.light.primary : colors.text.dark.primary,
+            color: isDarkMode ? colors.text.dark.primary : colors.text.light.primary,
             borderColor: isDarkMode ? colors.shadow.dark : colors.shadow.light,
             '&:hover': {
               borderColor: isDarkMode ? colors.shadow.dark : colors.shadow.light,

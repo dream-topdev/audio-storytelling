@@ -56,7 +56,7 @@ export default function AudioPlayer({ track, tracks, isDarkMode, onTrackChange }
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const textColor = isDarkMode ? colors.text.light.primary : colors.text.dark.primary;
+  const textColor = isDarkMode ? colors.text.dark.primary : colors.text.light.primary;
 
   useEffect(() => {
     if (audioRef.current) {
@@ -275,7 +275,7 @@ export default function AudioPlayer({ track, tracks, isDarkMode, onTrackChange }
             {currentTrack?.title}
           </Typography>
           {currentTrack?.artist && (
-            <Typography variant="body2" sx={{ color: isDarkMode ? colors.text.light.secondary : colors.text.dark.secondary }}>
+            <Typography variant="body2" sx={{ color: isDarkMode ? colors.text.dark.secondary : colors.text.light.secondary }}>
               {currentTrack.artist}
             </Typography>
           )}

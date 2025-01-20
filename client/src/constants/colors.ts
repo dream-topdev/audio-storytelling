@@ -1,51 +1,51 @@
 export const colors = {
   // Primary colors
   primary: {
-    main: '#E84393', // Modern rose pink
-    light: '#FAB1C8', // Soft rose
-    dark: '#B83280', // Deep rose
+    main: '#D81B60', // Vivid pink
+    light: '#FF6090', // Light pink
+    dark: '#A00037', // Dark pink
     contrastText: '#ffffff',
   },
   
   // Secondary colors
   secondary: {
-    main: '#F8BBD0', // Muted pink
-    light: '#FCE4EC', // Very light pink
-    dark: '#C48B9F', // Dusty rose
-    contrastText: '#3d3d3d',
+    main: '#F06292', // Soft pink
+    light: '#FF94C2', // Very light pink
+    dark: '#BA2D65', // Deep pink
+    contrastText: '#ffffff',
   },
 
   // Background colors
   background: {
-    light: '#f2f2f2',
-    dark: '#121212',
+    light: '#FAFAFA', // Light grey
+    dark: '#121212', // Dark grey
     paper: {
-      light: '#ffffff',
-      dark: '#1E1E1E',
+      light: '#FFFFFF', // White
+      dark: '#424242', // Darker grey
       playlist: {
-        light: '#f2f2f2',
-        dark: '#242424',
+        light: '#F5F5F5', // Very light grey
+        dark: '#383838', // Medium dark grey
       }
     },
     overlay: {
-      light: 'rgba(0, 0, 0, 0.02)',
-      dark: 'rgba(255, 255, 255, 0.05)',
+      light: 'rgba(0, 0, 0, 0.04)', // Slightly darker overlay
+      dark: 'rgba(255, 255, 255, 0.08)', // Slightly lighter overlay
     }
   },
 
   // Text colors
   text: {
     light: {
-      primary: '#3d3d3d',
-      secondary: '#666666',
+      primary: '#212121', // Dark grey
+      secondary: '#757575', // Medium grey
     },
     dark: {
-      primary: '#ffffff',
-      secondary: '#B0B0B0',
+      primary: '#ffffff', // White
+      secondary: '#BDBDBD', // Light grey
     },
     grey: {
-      light: '#666666',
-      dark: '#B0B0B0',
+      light: '#757575', // Medium grey
+      dark: '#BDBDBD', // Light grey
     }
   },
 
@@ -54,47 +54,47 @@ export const colors = {
     white: '#ffffff',
     black: '#000000',
     grey: {
-      400: '#B0B0B0',
+      400: '#BDBDBD', // Light grey
     }
   },
 
   // Overlay colors
   overlay: {
     light: {
-      weak: 'rgba(0, 0, 0, 0.02)',
-      medium: 'rgba(0, 0, 0, 0.05)',
-      strong: 'rgba(0, 0, 0, 0.1)',
+      weak: 'rgba(0, 0, 0, 0.04)', // Slightly darker overlay
+      medium: 'rgba(0, 0, 0, 0.08)', // Medium overlay
+      strong: 'rgba(0, 0, 0, 0.12)', // Strong overlay
     },
     dark: {
-      weak: 'rgba(255, 255, 255, 0.05)',
-      medium: 'rgba(255, 255, 255, 0.1)',
-      strong: 'rgba(255, 255, 255, 0.2)',
+      weak: 'rgba(255, 255, 255, 0.08)', // Slightly lighter overlay
+      medium: 'rgba(255, 255, 255, 0.12)', // Medium overlay
+      strong: 'rgba(255, 255, 255, 0.16)', // Strong overlay
     }
   },
 
   // Scrollbar colors
   scrollbar: {
     light: {
-      track: '#f1f1f1',
-      thumb: '#888',
+      track: '#E0E0E0', // Light grey
+      thumb: '#9E9E9E', // Medium grey
     },
     dark: {
-      track: '#1e1e1e',
-      thumb: '#444',
+      track: '#424242', // Dark grey
+      thumb: '#616161', // Medium dark grey
     }
   },
 
   // Border colors
   border: {
-    light: 'rgba(0, 0, 0, 0.12)',
-    dark: 'rgba(255, 255, 255, 0.12)',
+    light: 'rgba(0, 0, 0, 0.15)', // Slightly darker border
+    dark: 'rgba(255, 255, 255, 0.15)', // Slightly lighter border
   },
 
   // Player colors
   player: {
     background: {
-      light: 'rgba(255,105,180,0.22)',
-      dark: 'rgba(255,105,180,0.15)',
+      light: 'rgba(216, 27, 96, 0.15)', // Light pink overlay
+      dark: 'rgba(216, 27, 96, 0.10)', // Dark pink overlay
     }
   },
 
@@ -102,7 +102,7 @@ export const colors = {
   gradient: {
     header: {
       light: 'linear-gradient(to right, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95))',
-      dark: 'linear-gradient(to right, rgba(18, 18, 18, 0.95), rgba(18, 18, 18, 0.95))'
+      dark: 'linear-gradient(to right, rgba(48, 48, 48, 0.95), rgba(48, 48, 48, 0.95))'
     }
   },
 

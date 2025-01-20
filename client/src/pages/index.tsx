@@ -64,7 +64,7 @@ export default function Home() {
       flexDirection: 'column',
       height: '100vh',
       bgcolor: isDarkMode ? colors.background.dark : colors.background.light,
-      color: isDarkMode ? colors.text.light.primary : colors.text.dark.primary,
+      color: isDarkMode ? colors.text.dark.primary : colors.text.light.primary,
       margin: 0,
       padding: 0,
       boxSizing: 'border-box',

@@ -24,7 +24,7 @@ export default function Playlist({ tracks, selectedTrack, onTrackSelect, isDarkM
     <Paper sx={{ 
       bgcolor: isDarkMode ? colors.player.background.dark : colors.player.background.light,
       borderRadius: '0px',
-      color: isDarkMode ? colors.text.light.primary : colors.text.dark.primary,
+      color: isDarkMode ? colors.text.dark.primary : colors.text.light.primary,
       p: { xs: 1, sm: 2 },
       height: '100%',
     }}>
