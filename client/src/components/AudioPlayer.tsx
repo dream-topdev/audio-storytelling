@@ -71,8 +71,13 @@ export default function AudioPlayer({ track, tracks, isDarkMode, onTrackChange }
         return;
       }
       
+      const wasPlaying = isPlaying;
+      const previousTime = audioRef.current.currentTime;
+      
       audioRef.current.src = currentTrack.url;
-      if (isPlaying) {
+      audioRef.current.currentTime = previousTime;
+      
+      if (wasPlaying) {
         audioRef.current.play().catch(error => {
           logger.error('Error playing audio:', error);
           pause();
@@ -112,10 +117,17 @@ export default function AudioPlayer({ track, tracks, isDarkMode, onTrackChange }
         audioRef.current?.pause();
         pause();
       } else {
+        // Store current time before playing
+        const currentTimeBeforePlay = audioRef.current?.currentTime || 0;
+        
         const playPromise = audioRef.current?.play();
         if (playPromise) {
           playPromise.then(() => {
             play();
+            // Ensure we maintain the current time position
+            if (audioRef.current) {
+              audioRef.current.currentTime = currentTimeBeforePlay;
+            }
           }).catch((error) => {
             logger.error('Error playing/pausing audio:', error);
             pause();
