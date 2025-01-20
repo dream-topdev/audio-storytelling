@@ -25,6 +25,7 @@ import {
 import { AudioTrack } from '../../../shared/types/audio';
 import { formatTime } from '../utils/time';
 import { useAudioPlayer } from '../hooks/useAudioPlayer';
+import { colors } from '../constants/colors';
 
 interface AudioPlayerProps {
   track: AudioTrack;
@@ -55,8 +56,7 @@ export default function AudioPlayer({ track, tracks, isDarkMode, onTrackChange }
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  
-  const textColor = isDarkMode ? 'common.white' : '#3d3d3d';
+  const textColor = isDarkMode ? colors.text.light.primary : colors.text.dark.primary;
 
   useEffect(() => {
     if (audioRef.current) {
@@ -221,7 +221,7 @@ export default function AudioPlayer({ track, tracks, isDarkMode, onTrackChange }
       height: '100%',
       display: 'flex',
       flexDirection: 'column',
-      bgcolor: isDarkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.02)',
+      bgcolor: isDarkMode ? colors.overlay.dark : colors.overlay.light,
       px: 2,
       py: 1
     }}>
@@ -275,7 +275,7 @@ export default function AudioPlayer({ track, tracks, isDarkMode, onTrackChange }
             {currentTrack?.title}
           </Typography>
           {currentTrack?.artist && (
-            <Typography variant="body2" sx={{ color: isDarkMode ? 'grey.400' : 'text.secondary' }}>
+            <Typography variant="body2" sx={{ color: isDarkMode ? colors.text.light.secondary : colors.text.dark.secondary }}>
               {currentTrack.artist}
             </Typography>
           )}

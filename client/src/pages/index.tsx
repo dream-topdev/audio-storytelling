@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
-import { useAuth } from '../context/AuthContext';
+import NextLink from 'next/link';
 import { Box, Link as MuiLink, Typography } from '@mui/material';
+import { Paper, useMediaQuery, useTheme } from '@mui/material';
+
+import { useAuth } from '../context/AuthContext';
 import { AudioTrack } from '../../../shared/types/audio';
 import { api } from '../utils/api';
 import AudioPlayer from '../components/AudioPlayer';
-import { Paper, useMediaQuery, useTheme } from '@mui/material';
 import Playlist from '../components/Playlist';
 import Header from '../components/Header';
 import AudioVisualizer from '../components/AudioVisualizer';
-import NextLink from 'next/link';
+import { colors } from '../constants/colors';
 
 export default function Home() {
   const { isAuthenticated } = useAuth();
@@ -61,8 +63,8 @@ export default function Home() {
       display: 'flex',
       flexDirection: 'column',
       height: '100vh',
-      bgcolor: isDarkMode ? '#121212' : '#f2f2f2',
-      color: isDarkMode ? 'common.white' : '#3d3d3d',
+      bgcolor: isDarkMode ? colors.background.dark : colors.background.light,
+      color: isDarkMode ? colors.text.light.primary : colors.text.dark.primary,
       margin: 0,
       padding: 0,
       boxSizing: 'border-box',
@@ -96,7 +98,7 @@ export default function Home() {
         <Box sx={{
           width: { xs: '100%', md: '300px' },
           borderLeft: 1,
-          borderColor: isDarkMode ? 'rgba(255,255,255,0.1)' : 'divider', 
+          borderColor: isDarkMode ? colors.shadow.dark : colors.shadow.light,
           display: { xs: 'none', md: 'block' }
         }}>
           <Playlist
@@ -112,10 +114,10 @@ export default function Home() {
         <Paper
           elevation={3}
           sx={{
-            bgcolor: isDarkMode ? 'rgba(255,105,180,0.15)' : 'rgba(255,105,180,0.22)',
+            bgcolor: isDarkMode ? colors.player.background.dark : colors.player.background.light,
             borderTop: 1,
             borderRadius: 0,
-            borderColor: isDarkMode ? 'rgba(255,105,180,0.2)' : 'rgba(255,105,180,0.1)',
+            borderColor: isDarkMode ? colors.shadow.dark : colors.shadow.light,
             zIndex: theme.zIndex.drawer + 1,
             backdropFilter: 'blur(8px)',
           }}

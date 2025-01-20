@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { Box } from '@mui/material';
 import GraphicEqIcon from '@mui/icons-material/GraphicEq';
 
+import { colors } from '../constants/colors';
+
 interface AudioVisualizerProps {
   audioElement: HTMLAudioElement | null;
   isDarkMode: boolean;
@@ -30,7 +32,7 @@ export default function AudioVisualizer({ audioElement, isDarkMode }: AudioVisua
     <Box sx={{ 
       width: '100%',
       height: '100%',
-      bgcolor: isDarkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.02)',
+      bgcolor: isDarkMode ? colors.player.background.dark : colors.player.background.light,
       borderRadius: 2,
       overflow: 'hidden',
       display: 'flex',
@@ -39,7 +41,7 @@ export default function AudioVisualizer({ audioElement, isDarkMode }: AudioVisua
     }}>
       <GraphicEqIcon sx={{ 
         fontSize: 64,
-        color: isDarkMode ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.1)',
+        color: isDarkMode ? colors.text.light.secondary : colors.text.dark.secondary,
         animation: isPlaying ? 'pulse 1s ease-in-out infinite' : 'none',
         '@keyframes pulse': {
           '0%': { opacity: 0.3 },

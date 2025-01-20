@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 
 import { AudioTrack } from '../../../shared/types/audio';
+import { colors } from '../constants/colors';
 
 interface PlaylistProps {
   tracks: AudioTrack[];
@@ -21,9 +22,9 @@ interface PlaylistProps {
 export default function Playlist({ tracks, selectedTrack, onTrackSelect, isDarkMode }: PlaylistProps) {
   return (
     <Paper sx={{ 
-      bgcolor: isDarkMode ? '#242424' : '#f2f2f2',
+      bgcolor: isDarkMode ? colors.player.background.dark : colors.player.background.light,
       borderRadius: '0px',
-      color: isDarkMode ? 'common.white' : '#3d3d3d',
+      color: isDarkMode ? colors.text.light.primary : colors.text.dark.primary,
       p: { xs: 1, sm: 2 },
       height: '100%',
     }}>
@@ -44,11 +45,11 @@ export default function Playlist({ tracks, selectedTrack, onTrackSelect, isDarkM
           width: '8px',
         },
         '&::-webkit-scrollbar-track': {
-          background: isDarkMode ? '#1e1e1e' : '#f1f1f1',
+          background: isDarkMode ? colors.scrollbar.dark.track : colors.scrollbar.light.track,
           borderRadius: '4px',
         },
         '&::-webkit-scrollbar-thumb': {
-          background: isDarkMode ? '#444' : '#888',
+          background: isDarkMode ? colors.scrollbar.dark.thumb : colors.scrollbar.light.thumb,
           borderRadius: '4px',
         },
       }}>
@@ -58,7 +59,9 @@ export default function Playlist({ tracks, selectedTrack, onTrackSelect, isDarkM
             disablePadding
             sx={{
               bgcolor: selectedTrack?.id === track.id 
-                ? (isDarkMode ? 'rgba(255,255,255,0.1)' : 'action.selected')
+                ? isDarkMode 
+                  ? colors.button.dark 
+                  : colors.button.light
                 : 'transparent',
               borderRadius: 1,
               mb: 0.5
@@ -70,8 +73,8 @@ export default function Playlist({ tracks, selectedTrack, onTrackSelect, isDarkM
                 borderRadius: 1,
                 '&:hover': {
                   bgcolor: isDarkMode 
-                    ? 'rgba(255,255,255,0.05)' 
-                    : 'rgba(0,0,0,0.05)'
+                    ? colors.button.hover.dark 
+                    : colors.button.hover.light
                 }
               }}
             >

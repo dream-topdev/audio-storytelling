@@ -1,27 +1,18 @@
 import { createTheme } from '@mui/material/styles';
+import { colors } from './colors';
 
 export const lightTheme = createTheme({
   palette: {
     mode: 'light',
-    primary: {
-      main: '#FF69B4', // Hot pink
-      light: '#FFB6C1', // Light pink
-      dark: '#FF1493', // Deep pink
-      contrastText: '#ffffff',
-    },
-    secondary: {
-      main: '#FFC0CB', // Pink
-      light: '#FFE4E1', // Misty rose
-      dark: '#DB7093', // Pale violet red
-      contrastText: '#3d3d3d',
-    },
+    primary: colors.primary,
+    secondary: colors.secondary,
     background: {
-      default: '#FFF0F5', // Lavender blush
-      paper: '#ffffff',
+      default: colors.background.light,
+      paper: colors.background.paper.light,
     },
     text: {
-      primary: '#424242', // Softer black
-      secondary: '#666666', // Softer gray
+      primary: colors.text.light.primary,
+      secondary: colors.text.light.secondary,
     },
   },
   components: {
@@ -35,7 +26,7 @@ export const lightTheme = createTheme({
         contained: {
           boxShadow: 'none',
           '&:hover': {
-            boxShadow: '0px 4px 8px rgba(255, 105, 180, 0.25)',
+            boxShadow: `0px 4px 8px ${colors.primary.main}40`,
           },
         },
       },
@@ -53,25 +44,15 @@ export const lightTheme = createTheme({
 export const darkTheme = createTheme({
   palette: {
     mode: 'dark',
-    primary: {
-      main: '#FF69B4',
-      light: '#FFB6C1',
-      dark: '#FF1493',
-      contrastText: '#ffffff',
-    },
-    secondary: {
-      main: '#FFC0CB',
-      light: '#FFE4E1',
-      dark: '#DB7093',
-      contrastText: '#FFB6C1',
-    },
+    primary: colors.primary,
+    secondary: colors.secondary,
     background: {
-      default: '#121212',
-      paper: '#1E1E1E',
+      default: colors.background.dark,
+      paper: colors.background.paper.dark,
     },
     text: {
-      primary: '#ffffff',
-      secondary: '#B0B0B0',
+      primary: colors.text.dark.primary,
+      secondary: colors.text.dark.secondary,
     },
   },
   components: {
@@ -85,7 +66,7 @@ export const darkTheme = createTheme({
         contained: {
           boxShadow: 'none',
           '&:hover': {
-            boxShadow: '0px 4px 8px rgba(255, 105, 180, 0.25)',
+            boxShadow: `0px 4px 8px ${colors.primary.main}40`,
           },
         },
       },

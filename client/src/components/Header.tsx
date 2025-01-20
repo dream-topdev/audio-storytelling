@@ -4,6 +4,7 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useAuth } from '../context/AuthContext';
 import { useRouter } from 'next/router';
+import { colors } from '../constants/colors';
 
 interface HeaderProps {
   isDarkMode: boolean;
@@ -30,10 +31,8 @@ export default function Header({ isDarkMode, onThemeToggle }: HeaderProps) {
       alignItems: 'center',
       p: { xs: 2, sm: 3 },
       borderBottom: 1,
-      borderColor: isDarkMode ? 'rgba(255,105,180,0.2)' : 'rgba(255,105,180,0.1)',
-      background: isDarkMode 
-        ? 'linear-gradient(180deg, rgba(255,105,180,0.1) 0%, rgba(18,18,18,0) 100%)'
-        : 'linear-gradient(180deg, rgba(255,105,180,0.05) 0%, rgba(255,255,255,0) 100%)',
+      borderColor: isDarkMode ? colors.border.dark : colors.border.light,
+      background: isDarkMode ? colors.gradient.header.dark : colors.gradient.header.light,
     }}>
       <Typography 
         variant="h4" 
@@ -49,10 +48,10 @@ export default function Header({ isDarkMode, onThemeToggle }: HeaderProps) {
         <IconButton 
           onClick={onThemeToggle}
           sx={{ 
-            color: isDarkMode ? 'common.white' : '#3d3d3d',
-            bgcolor: isDarkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)',
+            color: isDarkMode ? colors.text.light.primary : colors.text.dark.primary,
+            bgcolor: isDarkMode ? colors.button.dark : colors.button.light,
             '&:hover': {
-              bgcolor: isDarkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)',
+              bgcolor: isDarkMode ? colors.button.hover.dark : colors.button.hover.light,
             }
           }}
         >
@@ -63,11 +62,11 @@ export default function Header({ isDarkMode, onThemeToggle }: HeaderProps) {
           startIcon={<LogoutIcon />}
           onClick={handleLogout}
           sx={{
-            color: isDarkMode ? 'common.white' : '#3d3d3d',
-            borderColor: isDarkMode ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.2)',
+            color: isDarkMode ? colors.text.light.primary : colors.text.dark.primary,
+            borderColor: isDarkMode ? colors.shadow.dark : colors.shadow.light,
             '&:hover': {
-              borderColor: isDarkMode ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.3)',
-              bgcolor: isDarkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)',
+              borderColor: isDarkMode ? colors.shadow.dark : colors.shadow.light,
+              bgcolor: isDarkMode ? colors.button.hover.dark : colors.button.hover.light,
             }
           }}
         >
