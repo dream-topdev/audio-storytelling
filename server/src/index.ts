@@ -1,25 +1,34 @@
 import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
+import { initializeDatabase } from './config/database';
+import { seedTracks } from './controllers/audioController';
 import authRoutes from './routes/auth';
-import audioRoutes from './routes/audio'
+import audioRoutes from './routes/audio';
 import { errorHandler } from './middleware/errorHandler';
 import { CORS_OPTIONS } from './config/constants';
 
-const app = express();
-const PORT = process.env.PORT || 5000;
+const startServer = async () => {
+  await initializeDatabase();
+  await seedTracks();
 
-app.use(cors(CORS_OPTIONS));
-app.use(express.json());
-app.use(cookieParser());
+  const app = express();
+  const PORT = process.env.PORT || 5000;
 
-// Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/audio', audioRoutes);
+  app.use(cors(CORS_OPTIONS));
+  app.use(express.json());
+  app.use(cookieParser());
 
-// Error handling
-app.use(errorHandler);
+  // Routes
+  app.use('/api/auth', authRoutes);
+  app.use('/api/audio', audioRoutes);
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-}); 
+  // Error handling
+  app.use(errorHandler);
+
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+};
+
+startServer().catch(console.error); 

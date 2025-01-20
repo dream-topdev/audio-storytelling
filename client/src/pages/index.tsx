@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { Box, Typography } from '@mui/material';
+import { Box, Link as MuiLink, Typography } from '@mui/material';
 import { AudioTrack } from '../../../shared/types/audio';
 import { api } from '../utils/api';
 import AudioPlayer from '../components/AudioPlayer';
@@ -8,6 +8,7 @@ import { Paper, useMediaQuery, useTheme } from '@mui/material';
 import Playlist from '../components/Playlist';
 import Header from '../components/Header';
 import AudioVisualizer from '../components/AudioVisualizer';
+import NextLink from 'next/link';
 
 export default function Home() {
   const { isAuthenticated } = useAuth();
@@ -45,14 +46,17 @@ export default function Home() {
           Welcome to Audio Stories
         </Typography>
         <Typography variant="body1" gutterBottom>
-          Please log in to access your personalized audio library.
+          <NextLink href="/login" passHref>
+            <MuiLink>Please log in</MuiLink>
+          </NextLink>
+          {' '}to access your personalized audio library.
         </Typography>
       </Box>
     );
   }
 
   return (
-    <Box sx={{ 
+    <Box sx={{
       display: 'flex',
       flexDirection: 'column',
       height: '100vh',
@@ -64,21 +68,21 @@ export default function Home() {
       overflow: 'hidden'
     }}>
       <Header isDarkMode={isDarkMode} onThemeToggle={() => setIsDarkMode(!isDarkMode)} />
-      
+
       {/* Main content will automatically take remaining space */}
-      <Box sx={{ 
-        display: 'flex', 
+      <Box sx={{
+        display: 'flex',
         flexGrow: 1,
         overflow: 'hidden'
       }}>
         {/* Main Content */}
-        <Box sx={{ 
+        <Box sx={{
           flexGrow: 1,
           p: 3,
           overflow: 'auto'
         }}>
           {selectedTrack && (
-            <AudioVisualizer 
+            <AudioVisualizer
               audioElement={document.querySelector('audio')}
               isDarkMode={isDarkMode}
             />
@@ -86,7 +90,7 @@ export default function Home() {
         </Box>
 
         {/* Right Sidebar - Playlist */}
-        <Box sx={{ 
+        <Box sx={{
           width: { xs: '100%', md: '300px' },
           borderLeft: 1,
           borderColor: isDarkMode ? 'rgba(255,255,255,0.1)' : 'divider',
@@ -104,18 +108,18 @@ export default function Home() {
       {/* Player will maintain its fixed height */}
       {selectedTrack && (
         <Paper
-        elevation={3}
-        sx={{
-          bgcolor: isDarkMode ? 'rgba(255,105,180,0.05)' : 'rgba(255,105,180,0.02)',
-          borderTop: 1,
-          borderRadius: 0,
-          borderColor: isDarkMode ? 'rgba(255,105,180,0.2)' : 'rgba(255,105,180,0.1)',
-          zIndex: theme.zIndex.drawer + 1,
-          backdropFilter: 'blur(8px)',
-        }}
-      >
-          <AudioPlayer 
-            track={selectedTrack} 
+          elevation={3}
+          sx={{
+            bgcolor: isDarkMode ? 'rgba(255,105,180,0.05)' : 'rgba(255,105,180,0.02)',
+            borderTop: 1,
+            borderRadius: 0,
+            borderColor: isDarkMode ? 'rgba(255,105,180,0.2)' : 'rgba(255,105,180,0.1)',
+            zIndex: theme.zIndex.drawer + 1,
+            backdropFilter: 'blur(8px)',
+          }}
+        >
+          <AudioPlayer
+            track={selectedTrack}
             isDarkMode={isDarkMode}
             tracks={tracks}
             onTrackChange={setSelectedTrack}

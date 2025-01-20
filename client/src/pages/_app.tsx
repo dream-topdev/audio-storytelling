@@ -2,19 +2,32 @@ import { AppProps } from 'next/app';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { AuthProvider } from '../context/AuthContext';
 import { useThemeMode } from '../hooks/useThemeMode';
+import { StrictMode, useEffect, useState } from 'react';
 
 export default function App({ 
   Component, 
   pageProps: { session, ...pageProps }
 }: AppProps) {
   const { theme } = useThemeMode();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Prevent hydration issues by only rendering once mounted
+  if (!mounted) {
+    return null;
+  }
 
   return (
-    <AuthProvider>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </AuthProvider>
+    <StrictMode>
+      <AuthProvider>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </AuthProvider>
+    </StrictMode>
   );
 } 

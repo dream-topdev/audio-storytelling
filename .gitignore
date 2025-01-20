@@ -55,3 +55,6 @@ yarn-error.log*
 package-lock.json
 dist/
 
+# Add to existing .gitignore
+*.sqlite
+*.sqlite-journal
