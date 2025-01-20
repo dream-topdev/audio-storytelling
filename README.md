@@ -1,6 +1,10 @@
-# Audio Storytelling Web App
+# Audio Stories
 
-A simple web application for listening to audio stories.
+A web application for curated audio stories and dialogues.
+
+## 🏗️ Architecture
+
+### Project Structure
 
 ## Setup
 
@@ -32,7 +36,7 @@ A simple web application for listening to audio stories.
 - **Authentication**: JWT-based authentication with httpOnly cookies for security
 - **State Management**: React Context for auth state, local state for audio playback
 - **API Structure**: RESTful API endpoints for auth and audio track management
-- **Storage**: In-memory storage for demonstration (should be replaced with a proper database in production)
+- **Storage**: SQLite database for lightweight, file-based data persistence
 
 ## Tech Stack
 
