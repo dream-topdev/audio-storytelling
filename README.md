@@ -20,7 +20,22 @@ A web application for curated audio stories and dialogues.
    npm install
    ```
 
-3. Start the development servers:
+3. Set up environment variables (optional for development):
+   ```bash
+   # In the server directory
+   cp .env.example .env
+   
+   # In the client directory
+   cp .env.example .env.local
+   ```
+   
+   Note: In development mode, the application will use default configurations if no environment files are present.
+   
+   If you need custom configurations, update the environment files:
+   - Server `.env`: Database connection, JWT secret, etc.
+   - Client `.env.local`: API URL and other frontend configs
+
+4. Start the development servers:
    ```bash
    # Start the backend server (from the server directory)
    npm run dev
@@ -29,7 +44,7 @@ A web application for curated audio stories and dialogues.
    npm run dev
    ```
 
-4. Visit http://localhost:3000 in your browser
+5. Visit http://localhost:3000 in your browser
 
 ## Architecture Decisions
 
