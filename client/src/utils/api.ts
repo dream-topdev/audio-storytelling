@@ -35,7 +35,14 @@ export const api = {
       return response.json();
     },
 
-    logout: () => axios.post(`${API_BASE_URL}/auth/logout`),
+    logout: async () => {
+      const response = await fetch(`${API_BASE_URL}/auth/logout`, {
+        method: 'POST',
+        credentials: 'include',
+      });
+      if (!response.ok) throw new Error('Logout failed');
+      return response.json();
+    },
   },
 
   audio: {

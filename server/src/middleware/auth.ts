@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
-import { JWT_SECRET } from '../config/constants';
+import { JWT_SECRET, COOKIE_OPTIONS } from '../config/constants';
 import { User } from '../../../shared/types/auth';
 
 export interface AuthRequest extends Request {
@@ -12,7 +12,7 @@ export const authMiddleware = (req: AuthRequest, res: Response, next: NextFuncti
   const token = req.cookies.token;
 
   if (!token) {
-    return res.status(401).json({ message: 'Authentication required' });
+    return res.status(401).json({ message: 'No token provided' });
   }
 
   try {
@@ -20,6 +20,11 @@ export const authMiddleware = (req: AuthRequest, res: Response, next: NextFuncti
     req.user = { email: decoded.email };
     next();
   } catch (error) {
-    res.status(401).json({ message: 'Invalid token' });
+    res.clearCookie('token', {
+      ...COOKIE_OPTIONS,
+      maxAge: 0,
+      expires: new Date(0)
+    });
+    return res.status(401).json({ message: 'Invalid or expired token' });
   }
 }; 

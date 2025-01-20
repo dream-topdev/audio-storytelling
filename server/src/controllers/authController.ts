@@ -55,8 +55,17 @@ export const login = async (req: Request, res: Response) => {
 };
 
 export const logout = async (_: Request, res: Response) => {
-  res.clearCookie('token', COOKIE_OPTIONS);
-  res.json({ message: 'Logged out successfully' });
+  try {
+    res.clearCookie('token', {
+      ...COOKIE_OPTIONS,
+      maxAge: 0,
+      expires: new Date(0)
+    });
+    res.json({ message: 'Logged out successfully' });
+  } catch (error) {
+    console.error('Logout error:', error);
+    res.status(500).json({ message: 'Error during logout' });
+  }
 };
 
 export const verify = async (req: Request, res: Response) => {
