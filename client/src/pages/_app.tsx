@@ -1,8 +1,9 @@
+import { StrictMode, useEffect, useState } from 'react';
 import { AppProps } from 'next/app';
 import { ThemeProvider, CssBaseline } from '@mui/material';
+
 import { AuthProvider } from '../context/AuthContext';
 import { useThemeMode } from '../hooks/useThemeMode';
-import { StrictMode, useEffect, useState } from 'react';
 
 export default function App({ 
   Component, 

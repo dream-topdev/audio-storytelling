@@ -11,8 +11,9 @@ import {
   Link as MuiLink
 } from '@mui/material';
 import Link from 'next/link';
-import { SignupCredentials } from '../../../shared/types/auth';
+
 import { useAuth } from '../context/AuthContext';
+import { SignupCredentials } from '../../../shared/types/auth';
 
 export default function Signup() {
   const [credentials, setCredentials] = useState<SignupCredentials>({

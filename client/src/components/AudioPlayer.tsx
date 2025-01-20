@@ -9,9 +9,6 @@ import {
   useTheme,
   useMediaQuery
 } from '@mui/material';
-import { AudioTrack } from '../../../shared/types/audio';
-import { formatTime } from '../utils/time';
-import { useAudioPlayer } from '../hooks/useAudioPlayer';
 import {
   PlayArrow as PlayArrowIcon,
   Pause as PauseIcon,
@@ -24,6 +21,10 @@ import {
   Forward10 as Forward10Icon,
   Replay10 as Replay10Icon,
 } from '@mui/icons-material';
+
+import { AudioTrack } from '../../../shared/types/audio';
+import { formatTime } from '../utils/time';
+import { useAudioPlayer } from '../hooks/useAudioPlayer';
 
 interface AudioPlayerProps {
   track: AudioTrack;

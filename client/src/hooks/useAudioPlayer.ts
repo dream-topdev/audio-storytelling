@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+
 import { AudioTrack } from '../../../shared/types/audio';
 
 export const useAudioPlayer = (tracks: AudioTrack[], selectedTrack: AudioTrack | null) => {

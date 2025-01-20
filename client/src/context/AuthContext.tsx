@@ -1,7 +1,8 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+
 import { api } from '../utils/api';
-import { LoginCredentials, SignupCredentials, User } from '../../../shared/types/auth';
 import { handleApiError } from '../utils/errorHandler';
+import { LoginCredentials, SignupCredentials, User } from '../../../shared/types/auth';
 
 interface AuthContextType {
   user: User | null;

@@ -11,10 +11,11 @@ import {
   Link as MuiLink
 } from '@mui/material';
 import Link from 'next/link';
-import { LoginCredentials } from '../../../shared/types/auth';
+
 import { validateEmail } from '../utils/validation';
-import { handleApiError, isApiError } from '../utils/errorHandler';
+import { handleApiError } from '../utils/errorHandler';
 import { useAuth } from '../context/AuthContext';
+import { LoginCredentials } from '../../../shared/types/auth';
 
 export default function Login() {
   const [credentials, setCredentials] = useState<LoginCredentials>({

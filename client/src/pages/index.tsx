@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
-import { useAuth } from '../context/AuthContext';
 import { Box, Link as MuiLink, Typography } from '@mui/material';
-import { AudioTrack } from '../../../shared/types/audio';
-import { api } from '../utils/api';
-import AudioPlayer from '../components/AudioPlayer';
 import { Paper, useMediaQuery, useTheme } from '@mui/material';
+import NextLink from 'next/link';
+
+import { api } from '../utils/api';
+import { useAuth } from '../context/AuthContext';
+import AudioPlayer from '../components/AudioPlayer';
 import Playlist from '../components/Playlist';
 import Header from '../components/Header';
 import AudioVisualizer from '../components/AudioVisualizer';
-import NextLink from 'next/link';
+import { AudioTrack } from '../../../shared/types/audio';
+
 
 export default function Home() {
   const { isAuthenticated } = useAuth();

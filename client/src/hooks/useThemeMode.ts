@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useMediaQuery } from '@mui/material';
+
 import { lightTheme, darkTheme } from '../constants/theme';
 
 export const useThemeMode = () => {

@@ -1,5 +1,5 @@
-import { LoginCredentials, SignupCredentials } from '../../../shared/types/auth';
 import axios from 'axios';
+import { LoginCredentials, SignupCredentials } from '../../../shared/types/auth';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 
