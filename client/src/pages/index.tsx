@@ -1,16 +1,14 @@
 import { useState, useEffect } from 'react';
-import { Box, Link as MuiLink, Typography } from '@mui/material';
-import { Paper, useMediaQuery, useTheme } from '@mui/material';
-import NextLink from 'next/link';
-
-import { api } from '../utils/api';
 import { useAuth } from '../context/AuthContext';
+import { Box, Link as MuiLink, Typography } from '@mui/material';
+import { AudioTrack } from '../../../shared/types/audio';
+import { api } from '../utils/api';
 import AudioPlayer from '../components/AudioPlayer';
+import { Paper, useMediaQuery, useTheme } from '@mui/material';
 import Playlist from '../components/Playlist';
 import Header from '../components/Header';
 import AudioVisualizer from '../components/AudioVisualizer';
-import { AudioTrack } from '../../../shared/types/audio';
-
+import NextLink from 'next/link';
 
 export default function Home() {
   const { isAuthenticated } = useAuth();
@@ -41,8 +39,8 @@ export default function Home() {
         alignItems: 'center',
         justifyContent: 'center',
         minHeight: '100vh',
-        bgcolor: isDarkMode ? 'background.paper' : 'background.default',
-        color: isDarkMode ? 'common.white' : 'common.black',
+        bgcolor: 'background.paper',
+        color: 'secondary.contrastText',
         p: 3
       }}>
         <Typography variant="h4" gutterBottom>

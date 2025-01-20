@@ -17,7 +17,7 @@ export default function Header({ isDarkMode, onThemeToggle }: HeaderProps) {
   const handleLogout = async () => {
     try {
       await logout();
-      router.push('/login');
+      router.push('/');
     } catch (error) {
       console.error('Logout failed:', error);
     }
