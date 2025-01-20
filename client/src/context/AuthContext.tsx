@@ -2,7 +2,6 @@ import { createContext, useContext, useState, useEffect, ReactNode } from 'react
 import { api } from '../utils/api';
 import { LoginCredentials, SignupCredentials, User } from '../../../shared/types/auth';
 import { handleApiError } from '../utils/errorHandler';
-import { logger } from '../utils/logger';
 
 interface AuthContextType {
   user: User | null;
@@ -23,10 +22,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const userData = await api.auth.login(credentials);
       setUser(userData);
       setIsAuthenticated(true);
-      logger.info('User logged in successfully');
+      console.info('User logged in successfully');
     } catch (error) {
       const appError = handleApiError(error);
-      logger.error('Login failed:', appError);
+      console.error('Login failed:', appError);
       throw appError;
     }
   };
@@ -36,10 +35,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const userData = await api.auth.signup(credentials);
       setUser(userData);
       setIsAuthenticated(true);
-      logger.info('User signed up successfully');
+      console.info('User signed up successfully');
     } catch (error) {
       const appError = handleApiError(error);
-      logger.error('Signup failed:', appError);
+      console.error('Signup failed:', appError);
       throw appError;
     }
   };
@@ -49,10 +48,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       await api.auth.logout();
       setUser(null);
       setIsAuthenticated(false);
-      logger.info('User logged out successfully');
+      console.info('User logged out successfully');
     } catch (error) {
       const appError = handleApiError(error);
-      logger.error('Logout failed:', appError);
+      console.error('Logout failed:', appError);
       throw appError;
     }
   };
@@ -62,10 +61,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       .then(userData => {
         setUser(userData);
         setIsAuthenticated(true);
-        logger.info('User session verified');
+        console.info('User session verified');
       })
       .catch(error => {
-        logger.warn('Session verification failed:', error);
+        console.warn('Session verification failed:', error);
         setUser(null);
         setIsAuthenticated(false);
       });

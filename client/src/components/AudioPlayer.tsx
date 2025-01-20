@@ -11,7 +11,6 @@ import {
 } from '@mui/material';
 import { AudioTrack } from '../../../shared/types/audio';
 import { formatTime } from '../utils/time';
-import { logger } from '../utils/logger';
 import { useAudioPlayer } from '../hooks/useAudioPlayer';
 import {
   PlayArrow as PlayArrowIcon,
@@ -67,7 +66,7 @@ export default function AudioPlayer({ track, tracks, isDarkMode, onTrackChange }
   useEffect(() => {
     if (audioRef.current) {
       if (!currentTrack?.url) {
-        logger.warn('No audio URL provided');
+        console.warn('No audio URL provided'); 
         return;
       }
       
@@ -79,10 +78,10 @@ export default function AudioPlayer({ track, tracks, isDarkMode, onTrackChange }
       
       if (wasPlaying) {
         audioRef.current.play().catch(error => {
-          logger.error('Error playing audio:', error);
+          console.error('Error playing audio:', error);
           pause();
           if (error.name === 'NotSupportedError') {
-            logger.error('Audio format not supported or source unavailable');
+            console.error('Audio format not supported or source unavailable');
           }
         });
       }
@@ -108,7 +107,7 @@ export default function AudioPlayer({ track, tracks, isDarkMode, onTrackChange }
 
   const handlePlayPause = () => {
     if (!currentTrack?.url) {
-      logger.warn('Cannot play: No audio source available');
+      console.warn('Cannot play: No audio source available');
       return;
     }
 
@@ -129,13 +128,13 @@ export default function AudioPlayer({ track, tracks, isDarkMode, onTrackChange }
               audioRef.current.currentTime = currentTimeBeforePlay;
             }
           }).catch((error) => {
-            logger.error('Error playing/pausing audio:', error);
+            console.error('Error playing/pausing audio:', error);
             pause();
           });
         }
       }
     } catch (error) {
-      logger.error('Error playing/pausing audio:', error as Error);
+      console.error('Error playing/pausing audio:', error as Error);
       pause();
     }
   };
@@ -156,7 +155,7 @@ export default function AudioPlayer({ track, tracks, isDarkMode, onTrackChange }
       if (audioRef.current) {
         audioRef.current.currentTime = 0;
         audioRef.current.play().catch(error => {
-          logger.error('Error replaying audio:', error);
+          console.error('Error replaying audio:', error);
         });
       }
     } else if (repeatMode === 'all') {

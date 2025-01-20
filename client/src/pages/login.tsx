@@ -14,7 +14,6 @@ import Link from 'next/link';
 import { LoginCredentials } from '../../../shared/types/auth';
 import { validateEmail } from '../utils/validation';
 import { handleApiError, isApiError } from '../utils/errorHandler';
-import { logger } from '../utils/logger';
 import { useAuth } from '../context/AuthContext';
 
 export default function Login() {
@@ -50,11 +49,11 @@ export default function Login() {
 
     try {
       await login(credentials);
-      logger.info('Login successful');
+      console.info('Login successful');
       router.push('/');
     } catch (error) {
       const appError = handleApiError(error);
-      logger.error('Login failed:', appError);
+      console.error('Login failed:', appError);
       setErrors([appError.message]);
     }
   };

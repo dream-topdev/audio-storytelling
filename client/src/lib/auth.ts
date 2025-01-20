@@ -1,5 +1,6 @@
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { api } from '../utils/api';
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -13,20 +14,7 @@ export const authOptions: NextAuthOptions = {
         if (!credentials?.email || !credentials?.password) return null;
         
         try {
-          const response = await fetch('http://localhost:5000/api/auth/login', {
-            method: 'POST',
-            headers: { 
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-            },
-            body: JSON.stringify(credentials),
-          });
-
-          if (!response.ok) {
-            return null;
-          }
-
-          const user = await response.json();
+          const user = await api.auth.login(credentials);
           return user;
         } catch (error) {
           console.error('Auth error:', error);
