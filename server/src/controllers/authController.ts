@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+
 import { JWT_SECRET, COOKIE_OPTIONS } from '../config/constants';
 import { AppDataSource } from '../config/database';
 import { User } from '../entities/User';

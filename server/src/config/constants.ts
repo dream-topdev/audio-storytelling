@@ -1,4 +1,5 @@
 export const JWT_SECRET = process.env.JWT_SECRET || 'my-secret-key';
+
 export const COOKIE_OPTIONS = {
   httpOnly: true,
   secure: process.env.NODE_ENV === 'production',

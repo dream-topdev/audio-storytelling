@@ -1,4 +1,5 @@
 import { Router } from 'express';
+
 import { login, signup, verify } from '../controllers/authController';
 import { authMiddleware } from '../middleware/auth';
 

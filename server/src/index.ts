@@ -1,12 +1,13 @@
 import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
+
 import { initializeDatabase } from './config/database';
+import { CORS_OPTIONS } from './config/constants';
 import { seedTracks } from './controllers/audioController';
+import { errorHandler } from './middleware/errorHandler';
 import authRoutes from './routes/auth';
 import audioRoutes from './routes/audio';
-import { errorHandler } from './middleware/errorHandler';
-import { CORS_OPTIONS } from './config/constants';
 
 const startServer = async () => {
   await initializeDatabase();

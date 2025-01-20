@@ -1,7 +1,8 @@
 import { DataSource } from "typeorm";
+import path from "path";
+
 import { User } from "../entities/User";
 import { AudioTrack } from "../entities/AudioTrack";
-import path from "path";
 
 export const AppDataSource = new DataSource({
     type: "sqlite",
