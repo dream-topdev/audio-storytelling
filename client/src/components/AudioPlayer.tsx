@@ -55,7 +55,7 @@ export default function AudioPlayer({ track, tracks, isDarkMode, onTrackChange }
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   
-  const textColor = isDarkMode ? 'common.white' : 'common.black';
+  const textColor = isDarkMode ? 'common.white' : '#3d3d3d';
 
   useEffect(() => {
     if (audioRef.current) {

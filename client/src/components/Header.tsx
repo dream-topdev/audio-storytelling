@@ -33,7 +33,7 @@ export default function Header({ isDarkMode, onThemeToggle }: HeaderProps) {
       <IconButton 
         onClick={onThemeToggle}
         sx={{ 
-          color: isDarkMode ? 'common.white' : 'common.black',
+          color: isDarkMode ? 'common.white' : '#3d3d3d',
           bgcolor: isDarkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)',
           '&:hover': {
             bgcolor: isDarkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)',

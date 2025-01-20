@@ -13,7 +13,7 @@ export const lightTheme = createTheme({
       main: '#FFC0CB', // Pink
       light: '#FFE4E1', // Misty rose
       dark: '#DB7093', // Pale violet red
-      contrastText: '#000000',
+      contrastText: '#3d3d3d',
     },
     background: {
       default: '#FFF0F5', // Lavender blush

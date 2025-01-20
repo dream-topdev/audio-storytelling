@@ -16,6 +16,7 @@ export default function Home() {
   const [selectedTrack, setSelectedTrack] = useState<AudioTrack | null>(null);
   const [isDarkMode, setIsDarkMode] = useState(true);
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -61,7 +62,7 @@ export default function Home() {
       flexDirection: 'column',
       height: '100vh',
       bgcolor: isDarkMode ? '#121212' : '#f2f2f2',
-      color: isDarkMode ? 'common.white' : 'common.black',
+      color: isDarkMode ? 'common.white' : '#3d3d3d',
       margin: 0,
       padding: 0,
       boxSizing: 'border-box',
@@ -82,14 +83,26 @@ export default function Home() {
           overflow: 'auto'
         }}>
           {selectedTrack && (
-            <AudioVisualizer
-              audioElement={document.querySelector('audio')}
-              isDarkMode={isDarkMode}
-            />
+            <>
+              {/* Show Playlist on mobile, AudioVisualizer on desktop */}
+              {isMobile ? (
+                <Playlist
+                  tracks={tracks}
+                  selectedTrack={selectedTrack}
+                  onTrackSelect={setSelectedTrack}
+                  isDarkMode={isDarkMode}
+                />
+              ) : (
+                <AudioVisualizer
+                  audioElement={document.querySelector('audio')}
+                  isDarkMode={isDarkMode}
+                />
+              )}
+            </>
           )}
         </Box>
 
-        {/* Right Sidebar - Playlist */}
+        {/* Right Sidebar - Playlist (desktop only) */}
         <Box sx={{
           width: { xs: '100%', md: '300px' },
           borderLeft: 1,
@@ -110,7 +123,7 @@ export default function Home() {
         <Paper
           elevation={3}
           sx={{
-            bgcolor: isDarkMode ? 'rgba(255,105,180,0.05)' : 'rgba(255,105,180,0.02)',
+            bgcolor: isDarkMode ? 'rgba(255,105,180,0.15)' : 'rgba(255,105,180,0.22)',
             borderTop: 1,
             borderRadius: 0,
             borderColor: isDarkMode ? 'rgba(255,105,180,0.2)' : 'rgba(255,105,180,0.1)',
