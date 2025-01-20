@@ -236,7 +236,6 @@ export default function AudioPlayer({ track, tracks, isDarkMode, onTrackChange }
         onEnded={handleTrackEnd}
       />
 
-      {/* Progress Bar */}
       <Box sx={{ mb: 1 }}>
         <Slider
           value={currentTime}
@@ -264,14 +263,12 @@ export default function AudioPlayer({ track, tracks, isDarkMode, onTrackChange }
         </Box>
       </Box>
 
-      {/* Controls and Track Info */}
       <Stack 
         direction="row" 
         spacing={1} 
         alignItems="center" 
         justifyContent="space-between"
       >
-        {/* Track Info */}
         <Box sx={{ minWidth: 200 }}>
           <Typography variant="subtitle1" sx={{ color: textColor, fontWeight: 'bold' }}>
             {currentTrack?.title}
@@ -283,7 +280,6 @@ export default function AudioPlayer({ track, tracks, isDarkMode, onTrackChange }
           )}
         </Box>
 
-        {/* Main Controls */}
         <Box sx={{ 
           display: 'flex', 
           alignItems: 'center', 
@@ -375,8 +371,7 @@ export default function AudioPlayer({ track, tracks, isDarkMode, onTrackChange }
           )}
         </Box>
 
-        {/* Volume Controls */}
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, minWidth: 200, justifyContent: 'flex-end' }}>
+        {!isMobile && <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, minWidth: 200, justifyContent: 'flex-end' }}>
           <Tooltip title={volume === 0 ? 'Unmute' : 'Mute'}>
             <IconButton onClick={handleVolumeToggle} size="small" sx={{ color: textColor }}>
               {volume === 0 ? <VolumeOffIcon /> : <VolumeUpIcon />}
@@ -396,7 +391,7 @@ export default function AudioPlayer({ track, tracks, isDarkMode, onTrackChange }
               }
             }}
           />
-        </Box>
+        </Box>}
       </Stack>
     </Box>
   );

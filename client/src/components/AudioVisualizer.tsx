@@ -11,6 +11,7 @@ export default function AudioVisualizer({ audioElement, isDarkMode }: AudioVisua
   const [isPlaying, setIsPlaying] = useState(false);
   
   useEffect(() => {
+    console.log({audioElement})
     if (!audioElement) return;
 
     const handlePlay = () => setIsPlaying(true);

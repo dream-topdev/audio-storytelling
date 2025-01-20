@@ -70,43 +70,33 @@ export default function Home() {
     }}>
       <Header isDarkMode={isDarkMode} onThemeToggle={() => setIsDarkMode(!isDarkMode)} />
 
-      {/* Main content will automatically take remaining space */}
       <Box sx={{
         display: 'flex',
         flexGrow: 1,
         overflow: 'hidden'
       }}>
-        {/* Main Content */}
-        <Box sx={{
-          flexGrow: 1,
-          p: 3,
-          overflow: 'auto'
-        }}>
+        <Box sx={{ flexGrow: 1, p: 3, overflow: 'auto' }}>
           {selectedTrack && (
-            <>
-              {/* Show Playlist on mobile, AudioVisualizer on desktop */}
-              {isMobile ? (
-                <Playlist
-                  tracks={tracks}
-                  selectedTrack={selectedTrack}
-                  onTrackSelect={setSelectedTrack}
-                  isDarkMode={isDarkMode}
-                />
-              ) : (
-                <AudioVisualizer
-                  audioElement={document.querySelector('audio')}
-                  isDarkMode={isDarkMode}
-                />
-              )}
-            </>
+            isMobile ? (
+              <Playlist
+                tracks={tracks}
+                selectedTrack={selectedTrack} 
+                onTrackSelect={setSelectedTrack}
+                isDarkMode={isDarkMode}
+              />
+            ) : (
+              <AudioVisualizer
+                audioElement={document.querySelector('audio')}
+                isDarkMode={isDarkMode}
+              />
+            )
           )}
         </Box>
 
-        {/* Right Sidebar - Playlist (desktop only) */}
         <Box sx={{
           width: { xs: '100%', md: '300px' },
           borderLeft: 1,
-          borderColor: isDarkMode ? 'rgba(255,255,255,0.1)' : 'divider',
+          borderColor: isDarkMode ? 'rgba(255,255,255,0.1)' : 'divider', 
           display: { xs: 'none', md: 'block' }
         }}>
           <Playlist
@@ -118,7 +108,6 @@ export default function Home() {
         </Box>
       </Box>
 
-      {/* Player will maintain its fixed height */}
       {selectedTrack && (
         <Paper
           elevation={3}
