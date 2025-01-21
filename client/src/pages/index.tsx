@@ -42,7 +42,7 @@ export default function Home() {
         justifyContent: 'center',
         minHeight: '100vh',
         bgcolor: 'background.paper',
-        color: 'secondary.contrastText',
+        color: 'text.primary',
         p: 3
       }}>
         <Typography variant="h4" gutterBottom>
