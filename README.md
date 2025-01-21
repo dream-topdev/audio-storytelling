@@ -2,6 +2,10 @@
 
 A modern web application for streaming curated audio stories and dialogues, featuring a responsive design and seamless playback experience.
 
+## 🎥 Demo Video
+
+Watch the demo video [here](https://www.loom.com/share/360379c187c5446eb29601482277e746)
+
 ## 🚀 Quick Start
 
 1. **Prerequisites**
@@ -35,10 +39,13 @@ A modern web application for streaming curated audio stories and dialogues, feat
 
 4. Start the development servers:
    ```bash
-   # Start the backend server (from the server directory)
+   # Start both the backend and frontend servers from the root directory
+   npm run dev:all
+
+   # Alternatively, start the backend server (from the server directory)
    npm run dev
    
-   # Start the frontend server (from the client directory)
+   # And start the frontend server (from the client directory)
    npm run dev
    ```
 
@@ -51,15 +58,19 @@ A modern web application for streaming curated audio stories and dialogues, feat
 ### Frontend Architecture
 - **Component Structure**: Modular components with clear separation of concerns
 - **State Management**: 
-  - Auth state managed via NextAuth.js for secure authentication
+  - Auth state managed via Session-based cookies + JSON Web Tokens (JWT) for secure authentication
   - Local state for audio player controls and playlist management
+  - React Context is used to manage authentication actions and user information, providing a centralized way to access and update auth state across the application.
 - **Theme System**: Dynamic light/dark mode with Material-UI
 - **Type Safety**: Full TypeScript implementation
+- **Routing**: Next.js routing with dynamic routes and API routes
+- **Middleware**: Custom middleware for authentication and route protection
+
 
 ### Backend Architecture
-- **API Design**: RESTful architecture with versioned endpoints
+- **API Design**: RESTful architecture with endpoints
 - **Security**: 
-  - NextAuth.js authentication with built-in session management
+  - Session-based cookies + JSON Web Tokens (JWT) for authentication, utilizing custom middleware to decode cookie tokens and pass the req.user decoded information to the controller
   - CORS configuration for secure client-server communication
 - **Database**: SQLite with TypeORM for robust entity management
 - **Error Handling**: Centralized error management with custom middleware
@@ -69,7 +80,7 @@ A modern web application for streaming curated audio stories and dialogues, feat
 - **Material-UI**: Provides consistent, responsive UI components
 - **Express.js**: Lightweight, flexible backend framework
 - **TypeORM**: Type-safe database operations with powerful entity relationships
-- **NextAuth.js**: Flexible authentication with multiple provider support
+- **Session-based cookies + JSON Web Tokens (JWT)**: Flexible authentication with multiple provider support
 
 ## 💻 Tech Stack
 
@@ -77,12 +88,33 @@ A modern web application for streaming curated audio stories and dialogues, feat
 - Next.js + React
 - TypeScript
 - Material-UI
-- NextAuth.js
+- Session-based cookies + JSON Web Tokens (JWT) for authentication
 - React Context
-
+- React Hooks
 ### Backend
 - Node.js + Express
 - TypeScript
 - TypeORM
 - SQLite
-- NextAuth.js
+- Session-based cookies + JSON Web Tokens (JWT) for authentication
+
+
+## 📚 Documentation
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [TypeScript Documentation](https://www.typescriptlang.org/docs)
+- [Material-UI Documentation](https://mui.com/material-ui/getting-started/overview/)
+- [TypeORM Documentation](https://typeorm.io/)
+- [SQLite Documentation](https://www.sqlite.org/docs.html)
+- [Express Documentation](https://expressjs.com/en/4x/api.html)
+- [Node.js Documentation](https://nodejs.org/en/docs)
+- [JWT Documentation](https://jwt.io/)
+- [Session-based cookies Documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies)
+
+## 🎨 UI/UX Design Decisions
+
+The user interface design of the application is inspired by a blend of contemporary aesthetics and functional layouts. The primary color scheme is centered around a vibrant pink, reminiscent of the design ethos found on Quinn's website, which evokes a sense of warmth and approachability.
+The overall layout draws significant influence from the Windows Media Player screen, emphasizing a clean and intuitive user experience. This layout facilitates easy navigation and enhances user engagement, allowing users to seamlessly interact with audio content.
+For the authentication process, the application utilizes Material-UI's default authentication forms for login and registration. This choice ensures a consistent and familiar experience for users, leveraging Material-UI's robust design principles to provide a responsive and accessible interface.
+Additionally, I have implemented a light/dark mode switcher using MUI's theme providers. This feature works seamlessly, allowing users to toggle between light and dark modes, enhancing usability and comfort based on their preferences and ambient lighting conditions.
+Furthermore, the application is designed to be mobile responsive, ensuring an optimal viewing experience across a wide range of devices, from desktops to smartphones. This responsiveness enhances accessibility and usability, allowing users to engage with the application effortlessly, regardless of their device.

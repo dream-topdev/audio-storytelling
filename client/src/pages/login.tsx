@@ -108,9 +108,9 @@ export default function Login() {
             </Button>
             <Typography align="center">
               Don't have an account?{' '}
-              <Link href="/signup" passHref>
-                <MuiLink>Sign Up</MuiLink>
-              </Link>
+              <MuiLink href="/signup" component={Link}>
+                Sign Up
+              </MuiLink>
             </Typography>
           </Box>
         </Paper>

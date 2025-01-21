@@ -93,7 +93,7 @@ export const colors = {
   // Player colors
   player: {
     background: {
-      light: 'rgba(216, 27, 96, 0.15)', // Light pink overlay
+      light: 'rgb(241, 245, 247)', // Light pink overlay
       dark: 'rgba(216, 27, 96, 0.10)', // Dark pink overlay
     }
   },
